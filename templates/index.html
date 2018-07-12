@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Main Page
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ url_for('index')}}" method="post">
+        User Name:<br>
+        <input type="text" name="username" placeholder="Enter Your Name" required ><br>
+        Password:<br>
+        <input type="password" name="password" placeholder="Password" required ><br>
+        <br>
+        <input type="submit" value="Login" align="right"><br>
+
+    </form>
+    <form action="{{ url_for('newuser')}}" method="post">
+                <input type="submit" value="New User">
+    </form>
+
+{% endblock %}
+

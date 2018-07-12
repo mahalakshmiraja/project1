@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h2>Details about City:</h2>
+
+        <table class="table">
+        <tbody>
+                <tr class="table-primary">
+                {% for i in cresult %}
+                    <td>Zipcode: {{ i.zipcode }}</td>
+                    <td>City: {{ i.city}}</td>
+                    <td>Latitude: {{ i.latitude }}</td>
+                    <td>Longitude: {{ i.longitude }}</td>
+                    <td>Population of the City: {{ i.population }}</td>
+                {% endfor %}
+                </tr>
+        </tbody>
+        </table>
+    <h5>Your comment:</h5><br>
+           <p> {{checkin_result}} </p>
+
+    <h2>Current Weather Update:</h2>
+
+        <table class="table">
+        <tbody>
+                <tr class="table-info">
+                    <td>Time: {{ time }}</td>
+                    <td>Temperature: {{ temp}}</td>
+                    <td>Dew Point: {{ dewpoint }}</td>
+                    <td>Humidity: {{ humidity }}</td>
+                    <td>Wind Speed: {{ windSpeed }}</td>
+                    <td>Ozone: {{ ozone }}</td>
+                </tr>
+        </tbody>
+        </table>
+
+
+        {% if not checks %}
+            <form action="{{ url_for('location', id=id) }}" name="commentForm" method="post">
+                Add comments:
+                <textarea rows="4" cols="50" name="comment" required></textarea>
+                <input type="checkbox" name="checkin" value="checked" checked>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+
+        <form action="{{ url_for('logout')}}" method="post">
+            <input type="submit" value="LogOut" >
+        </form>
+{% endblock %}

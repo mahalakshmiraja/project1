@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Logged In
+{% endblock %}
+
+{% block body %}
+    Search and Checkin your visit!
+    <form action="{{ url_for('login')}}" method="post">
+      Enter City:
+      <input type="text" name="city" ><br>
+      OR<br>
+      Enter ZipCode:
+      <input type="text" name="zipcode"><br>
+      <input type="submit" value="Search"><br>
+      <br>
+      <table class="table table-striped">
+        {% if check %}
+        <tbody>
+            {% for i in zipcode %}
+            <tr>
+                <td><a href="{{ url_for('location', id=i.id) }}">
+                    {{ i.zipcode }} {{ i.city }} {{ i.state }}</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        {% else %}
+        <tbody>
+                {% for i in citie %}
+                <tr>
+                    <td><a href="{{ url_for('location', id=i.id) }}">
+                        {{ i.zipcode }} {{ i.city }} {{ i.state }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+        {% endif %}
+    </table>
+    </form>
+{% endblock %}

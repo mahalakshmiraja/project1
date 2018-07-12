@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    CITY
+{% endblock %}
+
+{% block body %}
+      <p>City</p>
+      <ol>
+      {% for i in cities %}
+          <li>{{ i.zipcode }} {{ i.city }} {{ i.state }} {{ i.latitude }} {{ i.longitude }}  </li>
+
+      {% else %}
+          <li>No data</li>
+      {% endfor %}
+      </ol>
+{% endblock %}
